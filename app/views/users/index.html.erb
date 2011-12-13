@@ -1,0 +1,21 @@
+<table id="user-list">
+  <thead>
+    <tr>
+      <th>&nbsp;</th>
+      <th>&nbsp;</th>
+      <th>Returns</th>
+      <th>Message</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td class="status">&nbsp;</td>
+        <td class="name"><%= user.email %></td>
+        <td class="return-time details">&nbsp;</td>
+        <td class="return-message details">&nbsp;</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

@@ -5,6 +5,12 @@ gem 'sqlite3'
 gem 'thin'
 gem 'devise'
 gem 'rspec-rails'
+gem 'jquery-rails'
+
+group :test do
+  gem 'capybara'
+  gem 'factory_girl'
+end
 
 group :assets do
   gem 'sass-rails',   '~> 3.1.5'
@@ -12,4 +18,3 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
