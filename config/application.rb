@@ -45,6 +45,9 @@ module Core3pm
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
 
+    #recommended by devise for heroku deployment
+    config.assets.initialize_on_precompile = false
+
     # Enable the asset pipeline
     config.assets.enabled = true
 
