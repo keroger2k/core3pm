@@ -6,6 +6,7 @@ gem 'thin'
 gem 'devise'
 gem 'rspec-rails'
 gem 'jquery-rails'
+gem 'activeadmin'
 
 group :test do
   gem 'capybara'
