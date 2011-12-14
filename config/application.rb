@@ -44,7 +44,11 @@ module Core3pm
     config.encoding = "utf-8"
 
     config.to_prepare { 
-      Devise::SessionsController.layout "login_layout" 
+      Devise::SessionsController.layout "devise" 
+      Devise::RegistrationsController.layout "devise"
+      Devise::ConfirmationsController.layout "devise"
+      Devise::UnlocksController.layout "devise"            
+      Devise::PasswordsController.layout "devise"
     } 
 
     # Configure sensitive parameters which will be filtered from the log file.

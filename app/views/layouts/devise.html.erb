@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Core3pm</title>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <% unless flash.empty? %>
+      <div id="notice">
+        <% flash.each do |key, value| %>
+          <div class="flash <%= key %> corners">
+            <%= value %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+    <div id="container">
+
+      <div class="login-window">
+        <span class="logo-only">
+          <%= image_tag("logo-only.png", :border => 0) %> 
+        </span>
+        <h1>Core 3</h1>
+        <%= yield %>
+      </div> 
+    </div>
+    <div id="footer">
+    </div>
+  </body>
+</html>
