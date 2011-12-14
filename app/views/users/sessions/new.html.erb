@@ -1,17 +1,32 @@
-<h2>Sign in</h2>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+<div class="login-window">
+  <span class="logo-only">
+    <%= image_tag("logo-only.png", :border => 0) %> 
+  </span>
+  <h1>Core 3</h1>
+  <% unless flash.empty? %>
+    <div id="notice">
+      <% flash.each do |key, value| %>
+        <div class="flash <%= key %> corners">
+          <%= value %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+    <div><%= f.label :email %>     
+      <%= f.email_field :email %></div>
 
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
+    <div><%= f.label :password %>
+      <%= f.password_field :password %></div>
 
-  <div><%= f.submit "Sign in" %></div>
-<% end %>
+    <% if devise_mapping.rememberable? -%>
+      <label for="user_remember_me"><%= f.check_box :remember_me %> Remember me on this computer.</label>
+    <% end -%>
 
-<%= render :partial => "devise/shared/links" %>
+    <div><%= f.submit "Sign in" %></div>
+  <% end %>
+
+  <%= render :partial => "users/shared/links" %>
+</div>

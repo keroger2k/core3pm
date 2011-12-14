@@ -35,9 +35,6 @@ inout.save = function(obj) {
       inout.replaceUsers();
     }
   });
-  //$.post('/users/edit/', obj || {}, function(data) {
-  //  inout.replaceUsers();
-  //});
 };
 
 $(function() {
@@ -47,6 +44,12 @@ $(function() {
   var $currentStatus = $('#main-nav').find('.status');
 
   inout.refresh();
+
+  $('div.error,div.alert,div.notice,div.success,div.info').animate({ 
+      opacity: 0 
+    }, 
+    10000
+  );
 
   $statusBox.click(function(e) {
     e.stopPropagation(); 
@@ -70,9 +73,9 @@ $(function() {
     inout.save({
       user: {
         id: $statusBox.data('id'),
-        returns: returns,
-        message: $messageBox.val(),
-        available: available
+      returns: returns,
+      message: $messageBox.val(),
+      available: available
       }
     });
     $currentStatus.toggleClass('available', available );
@@ -84,9 +87,9 @@ $(function() {
     inout.save({
       user: {
         id: $statusBox.data('id'),
-        returns: '',
-        message: '',
-        available: true
+      returns: '',
+      message: '',
+      available: true
       }
     });
     $messageBox.val('');
