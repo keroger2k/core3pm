@@ -27,9 +27,17 @@ inout.replaceUsers = function() {
 };
 
 inout.save = function(obj) {
-  $.post('/users/save', obj || {}, function(data) {
-    inout.replaceUsers();
+  $.ajax({
+    url: "/users",
+    type: "PUT", 
+    data: obj || {},
+    success: function(){
+      inout.replaceUsers();
+    }
   });
+  //$.post('/users/edit/', obj || {}, function(data) {
+  //  inout.replaceUsers();
+  //});
 };
 
 $(function() {
@@ -60,10 +68,12 @@ $(function() {
     var available = (returns === undefined);
 
     inout.save({
-      id: $statusBox.data('id'),
-      returns: returns,
-      message: $messageBox.val(),
-      available: available 
+      user: {
+        id: $statusBox.data('id'),
+        returns: returns,
+        message: $messageBox.val(),
+        available: available
+      }
     });
     $currentStatus.toggleClass('available', available );
     $currentStatus.toggleClass('unavailable', !available );
@@ -72,10 +82,12 @@ $(function() {
 
   $('.action-back', $statusBox).click(function() {
     inout.save({
-      id: $statusBox.data('id'),
-      returns: '',
-      message: '',
-      available: true 
+      user: {
+        id: $statusBox.data('id'),
+        returns: '',
+        message: '',
+        available: true
+      }
     });
     $messageBox.val('');
     $radioButtons.attr('checked', false);
