@@ -9,18 +9,18 @@ inout.refresh = function() {
 };
 
 inout.replaceUsers = function() {
-  var body = $('#user-list tbody');
+  var body = $('.user-list');
   var i = 0;
   $.getJSON('/', function(data) {
-    body.empty();
+    //body.empty();
     for(i = 0; i < data.length; i++) {
-      $(body).append(
-        '<tr>' +
-        '<td class="' + (data[i].available ? 'available' : 'unavailable') + ' status">&nbsp</td>' +
-        '<td class="name">' + data[i].name + '</td>' +
-        '<td class="return-time details">' + (data[i].returns ? data[i].returns : '') + '</td>' +
-        '<td class="return-message details">' + (data[i].message ? data[i].message : '') + '</td>' +
-        '</tr>');
+      //$(body).append(
+      //  '<tr>' +
+      // '<td class="' + (data[i].available ? 'available' : 'unavailable') + ' status">&nbsp</td>' +
+      //  '<td class="name">' + data[i].name + '</td>' +
+      //  '<td class="return-time details">' + (data[i].returns ? data[i].returns : '') + '</td>' +
+      //  '<td class="return-message details">' + (data[i].message ? data[i].message : '') + '</td>' +
+      //  '</tr>');
     }
     inout.refresh();
   });
@@ -72,7 +72,7 @@ $(function() {
 
     inout.save({
       user: {
-        id: $statusBox.data('id'),
+        id: $statusBox.attr('data-id'),
       returns: returns,
       message: $messageBox.val(),
       available: available
@@ -86,7 +86,7 @@ $(function() {
   $('.action-back', $statusBox).click(function() {
     inout.save({
       user: {
-        id: $statusBox.data('id'),
+        id: $statusBox.attr('data-id'),
       returns: '',
       message: '',
       available: true

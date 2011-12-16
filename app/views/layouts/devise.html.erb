@@ -10,7 +10,7 @@
     <% unless flash.empty? %>
       <div id="notice">
         <% flash.each do |key, value| %>
-          <div class="flash <%= key %> corners">
+          <div class="flash <%= key %>">
             <%= value %>
           </div>
         <% end %>

@@ -1,20 +1,20 @@
-<table id="user-list">
-  <thead>
-    <tr>
-      <th>&nbsp;</th>
-      <th>&nbsp;</th>
-      <th>Returns</th>
-      <th>Message</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td class="<%= user.available? ? 'available' : 'unavailable' %> status">&nbsp;</td>
-        <td class="name"><%= user.name %></td>
-        <td class="return-time details"><%= user.returns %></td>
-        <td class="return-message details"><%= user.message %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<ul class="user-list">
+  <% @users.each do |user| %>
+    <li class="user corners">
+      <div class="header corners no-bottom-corners 
+        <%= user.available? ? 'header-available' : 'header-unavailable' %>">
+        <span class="status <%= user.available? ? 
+        'available-status' : 'unavailable-status' %>">&nbsp;</span>
+      <span class="name"><%= user.name %></span>
+      <span class="returns">
+        <% unless user.available? %>
+        <label>returns </label> <%= user.returns %>
+      <% end %>
+      </span>
+    </div>
+    <div class="message"> 
+      <%= user.available? ? "In the office!" : user.message %>
+    </div>
+  </li>
+<% end %>
+</ul>
