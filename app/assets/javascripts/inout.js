@@ -9,7 +9,7 @@ inout.refresh = function() {
 };
 
 inout.replaceUsers = function() {
-  var body = $('.user-list');
+  var body = $('#user-list');
   var i = 0;
   $.getJSON('/', function(data) {
     //body.empty();
