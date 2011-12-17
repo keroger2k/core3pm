@@ -2,7 +2,6 @@ var inout = {};
 
 inout.refresh = function() {
   var users = $('#user-list');
-
   if(users.length === 1) {
     setTimeout(inout.replaceUsers, 20000);
   }
@@ -27,14 +26,14 @@ inout.replaceUsers = function() {
 };
 
 inout.save = function(obj) {
-  $.ajax({
-    url: "/users",
-    type: "PUT", 
-    data: obj || {},
-    success: function(){
-      inout.replaceUsers();
-    }
-  });
+  //$.ajax({
+  //  url: "/users",
+  //  type: "POST", 
+  //  data: obj || {},
+  //  success: function(){
+  //    inout.replaceUsers();
+  //  }
+  //});
 };
 
 $(function() {
@@ -72,10 +71,9 @@ $(function() {
 
     inout.save({
       user: {
-        id: $statusBox.attr('data-id'),
-      returns: returns,
-      message: $messageBox.val(),
-      available: available
+        returns: returns,
+        message: $messageBox.val(),
+        available: available
       }
     });
     $currentStatus.toggleClass('available', available );
@@ -86,7 +84,6 @@ $(function() {
   $('.action-back', $statusBox).click(function() {
     inout.save({
       user: {
-        id: $statusBox.attr('data-id'),
       returns: '',
       message: '',
       available: true
