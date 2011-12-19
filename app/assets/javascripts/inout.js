@@ -65,35 +65,9 @@ $(function() {
     $statusBox.toggle();
   });
 
-  $('.action-save', $statusBox).click(function() {
-    var returns = $('$radioButtons:checked').val();
-    var available = (returns === undefined);
-
-    inout.save({
-      user: {
-        returns: returns,
-        message: $messageBox.val(),
-        available: available
-      }
-    });
-    $currentStatus.toggleClass('available', available );
-    $currentStatus.toggleClass('unavailable', !available );
-    $statusBox.hide();
-  });
-
   $('.action-back', $statusBox).click(function() {
-    inout.save({
-      user: {
-      returns: '',
-      message: '',
-      available: true
-      }
-    });
     $messageBox.val('');
-    $radioButtons.attr('checked', false);
-    $currentStatus.addClass('available');
-    $currentStatus.removeClass('unavailable');
-    $statusBox.hide();
+    $radioButtons.first().attr('checked', true)
   });
 
 });

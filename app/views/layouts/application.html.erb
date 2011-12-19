@@ -24,14 +24,16 @@
                 <% else %>
                   <span class="unavailable status">&nbsp;</span>
                 <% end %>
-                <div id="my-status" data-id="<%= current_user.id %>">
+                <div id="my-status">
                   <div id="intro-text">
                     <%= link_to "In/Out Board", root_path %>  Display your current availability
                   </div>
-                  <div class="form-data">
-                    <% form_tag edit_user_registration_path(@current_user) do %>
+                    <%= form_for(:user, :as => current_user, 
+                          :url => registration_path(current_user), 
+                          :html => { :method => :put }) do |f| %>
+                      <%= radio_button_tag 'user[returns]', "", true, { :class => 'default-return-time' } %>
                       <% ['7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm'].each do |i| %>
-                        <%= radio_button_tag 'time-back', i, checked = (current_user.returns == i)%>
+                        <%= radio_button_tag 'user[returns]', i, (current_user.returns == i)%>
                         <label class="time-out"><%= i %></label>
                       <% end %> 
                       <%= text_area :user, :message, :cols => 40, :rows => 4, :value => current_user.message %>
@@ -40,7 +42,6 @@
                         <button class="action-back">I'm Back</button>
                       </div>
                     <% end %>
-                  </div>
                 </div>
               </li>
               <li><%= link_to current_user.email, edit_user_registration_path(@current_user) %> | </li>

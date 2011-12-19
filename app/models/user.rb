@@ -5,12 +5,16 @@ class User < ActiveRecord::Base
     :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :available, :message, :returns, :email, :password, :password_confirmation, :remember_me
+  attr_accessible :name, :message, :available, :returns, :email, :password, :password_confirmation, :remember_me
   validates_presence_of :name
 
   def update_with_password(params={})
     params.delete(:current_password)
     self.update_without_password(params)
+  end
+
+  def available?
+    !self.returns?
   end
 
 end
