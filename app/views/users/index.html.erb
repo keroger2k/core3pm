@@ -1,20 +1,41 @@
-<ul id="user-list">
-  <% @users.each do |user| %>
-    <li class="user corners">
-      <div class="header corners no-bottom-corners 
-        <%= user.available? ? 'header-available' : 'header-unavailable' %>">
-        <span class="status <%= user.available? ? 
-        'available-status' : 'unavailable-status' %>">&nbsp;</span>
-      <span class="name"><%= user.name %></span>
-      <span class="returns">
-        <% unless user.available? %>
-        <label>returns </label> <%= user.returns %>
-      <% end %>
-      </span>
+<script type="text/javascript">
+
+  $(function() {
+    $.getJSON('/', function(data) {
+      $('#user-list').html($('#user-list-template').render(data));
+    });
+  });
+
+</script>
+<ul id="user-list"></ul>
+
+<script id="user-list-template" type="text/x-jquery-tmpl">
+  <li class="user corners">
+      <div class='header corners no-bottom-corners 
+        {{#if available}} 
+          header-available
+        {{else}} 
+          header-unavailable
+        {{/if}}'>
+        <span class="status
+        {{#if available }} 
+          available-status
+        {{else}} 
+          unavailable-status
+        {{/if}}">&nbsp;</span>
+        <span class="name">{{=name}}</span>
+        <span class="returns">
+          {{#if available !== true }} 
+           <label>returns </label> {{=returns}}     
+          {{/if}}
+        </span>
     </div>
     <div class="message"> 
-      <%= user.available? ? "In the office!" : user.message %>
+      {{#if available}} 
+        <span>In the office!</span>
+      {{else}} 
+        {{=message}}
+      {{/if}}
     </div>
   </li>
-<% end %>
-</ul>
+</script>

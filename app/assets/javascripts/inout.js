@@ -8,32 +8,13 @@ inout.refresh = function() {
 };
 
 inout.replaceUsers = function() {
-  var body = $('#user-list');
+  var $body = $('#user-list');
   var i = 0;
   $.getJSON('/', function(data) {
-    //body.empty();
-    for(i = 0; i < data.length; i++) {
-      //$(body).append(
-      //  '<tr>' +
-      // '<td class="' + (data[i].available ? 'available' : 'unavailable') + ' status">&nbsp</td>' +
-      //  '<td class="name">' + data[i].name + '</td>' +
-      //  '<td class="return-time details">' + (data[i].returns ? data[i].returns : '') + '</td>' +
-      //  '<td class="return-message details">' + (data[i].message ? data[i].message : '') + '</td>' +
-      //  '</tr>');
-    }
+    $body.empty();
+    $body.html($('#user-list-template').render(data));
     inout.refresh();
   });
-};
-
-inout.save = function(obj) {
-  //$.ajax({
-  //  url: "/users",
-  //  type: "POST", 
-  //  data: obj || {},
-  //  success: function(){
-  //    inout.replaceUsers();
-  //  }
-  //});
 };
 
 $(function() {

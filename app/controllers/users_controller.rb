@@ -3,7 +3,11 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    respond_with(@users);
+    respond_with(@users) do |format|
+    	format.json {
+	    	render :json => @users.to_json(:methods => :available)
+	    }
+	end
   end
 
 end

@@ -3,7 +3,7 @@
   <head>
     <title>Inout</title>
     <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "application", "https://raw.github.com/BorisMoore/jsrender/master/jsrender.js" %>
 
     <%= csrf_meta_tags %>
   </head>
@@ -19,7 +19,7 @@
           <ul>
             <% if user_signed_in? %>
               <li>
-                <% if current_user.available? %>
+                <% if current_user.available %>
                   <span class="available status">&nbsp;</span>
                 <% else %>
                   <span class="unavailable status">&nbsp;</span>

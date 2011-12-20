@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
     self.update_without_password(params)
   end
 
-  def available?
+  def available
     !self.returns?
   end
 
