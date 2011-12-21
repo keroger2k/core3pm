@@ -7,6 +7,7 @@ gem 'rspec-rails'
 gem 'jquery-rails'
 gem 'activeadmin'
 gem 'heroku'
+gem 'sass-rails',   '~> 3.1.5'
 
 group :production do
   gem 'pg'
@@ -22,7 +23,6 @@ group :test do
 end
 
 group :assets do
-  gem 'sass-rails',   '~> 3.1.5'
   gem 'coffee-rails', '~> 3.1.1'
   gem 'uglifier', '>= 1.0.3'
 end
