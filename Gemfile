@@ -7,6 +7,7 @@ gem 'devise'
 gem 'rspec-rails'
 gem 'jquery-rails'
 gem 'activeadmin'
+gem 'heroku'
 
 group :test do
   gem 'capybara'
