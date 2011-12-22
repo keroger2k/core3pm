@@ -15,6 +15,7 @@
         <th>Returns</th>
         <th>Message</th>
       </tr>
+      <% if user_signed_in? %>
       <tr>
         <td class="name">
           <span class='status <%= (current_user.available) ? "available" : "unavailable" %>'>&nbsp;
@@ -52,6 +53,7 @@
           </div>
         </td>
       </tr>
+      <% end %>
     </thead>
     <tbody>
     </tbody>

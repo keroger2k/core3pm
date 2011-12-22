@@ -2,7 +2,11 @@ class UsersController < ApplicationController
   respond_to :html, :json
 
   def index
-    @users = User.where('email <> ?', current_user.email)
+    if user_signed_in? 
+      @users = User.where('email <> ?', current_user.email)
+    else
+      @users = User.all
+    end
     respond_with(@users) do |format|
     	format.html {}
     	format.json {
