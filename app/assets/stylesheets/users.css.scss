@@ -1,102 +1,57 @@
 html, body { height: 100%; }
 
-.available {
-  background-image:url('green-circle.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 20px;
-}
-.unavailable {
-  background-image:url('red-circle.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 20px;
-}
-span.unavailable, span.available {
-  display: inline-block;
-  width: 20px;
-  background-size: 15px;
-  margin-right: -8px;
-  cursor: pointer;
-}
-
-#my-status {
-  display:none; 
-  width: 450px;
-  position: absolute;
-  background-color: #FEFEFE;
-  border: 1px solid #AAA;
-  font-family: Arial,Helvetica,sans-serif;
-  -moz-box-shadow: 4px 4px 7px #ababab;
-  -webkit-box-shadow: 4px 4px 7px #ababab;
-  box-shadow: 4px 4px 7px #ababab;
-  z-index: 999;
-  top: 31px!important;
-  margin: 25px 0px 0 -200px;
-  line-height: 30px;
-}
-
-#my-status #intro-text {
-  font-size: 11px;
-  line-height: 12px;
-  padding: 5px;
-  color: white;
-  background: #AAA;
-}
-
-#my-status form {
-  padding: 10px;
-}
-
-#my-status textarea {
-  margin: 10px 0;
-}
-table {
+table#user-list {
   width: 100%;
   font-size: 1.2em;
   color: #666;
   border: 3px solid #e8e8e8;
+
   th {
     text-align: left; 
     border-bottom: 1px solid gray;
     padding: 10px;
     color: #000;
   }
+
   td {
     vertical-align: middle;
     padding: 10px;
     border-bottom: 1px solid gray;
   }
+
+  .status {
+    width: 30px;
+    margin-right:5px;
+    display:inline-block;
+  }
+
   .name { 
     width: 150px;
+
+    a {
+      color: #666;
+      text-decoration:none;
+      &:hover {
+        text-decoration:underline;
+      }
+    }
   }
-  .return-time {
+
+  .returns {
     width: 50px; 
   }
-  .return-message {
+
+  .available, .unavailable {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 15px;
   }
-  .action-edit {
-    padding: 5px; 
-    width: 10px; 
-    font-size: .8em;
+
+  .unavailable {
+    background-image:url('red-circle.png');
   }
-  .action-back, .action-save {
-    margin: 10px; 
-    padding: 10px;
-  }
-  input[type=radio] {
-    margin-right: 5px;
-  }
-  input.away-message {
-    width: 100%;
-  }
-  .away-radio-buttons {
-    text-align: center;
-  }
-  .form-data {
-    display: none;
-  }
-  .status {
-    width: 10px;
+
+  .available {
+    background-image:url('green-circle.png');
   }
 }

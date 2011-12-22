@@ -2,40 +2,74 @@
 
   $(function() {
     $.getJSON('/', function(data) {
-      $('#user-list').html($('#user-list-template').render(data));
+      $('#user-list').find('tbody').html($('#user-list-template').render(data));
     });
   });
 
 </script>
-<ul id="user-list"></ul>
+<div style="padding: 20px;">
+  <table id="user-list">
+    <thead>
+      <tr>
+        <th>&nbsp;</th>
+        <th>Returns</th>
+        <th>Message</th>
+      </tr>
+      <tr>
+        <td class="name">
+          <span class='status <%= (current_user.available) ? "available" : "unavailable" %>'>&nbsp;
+          </span>
+          <a href="#" id="update-status"><%= current_user.name %></a>
+        </td>
+        <td class="returns">
+          <%= current_user.returns %>
+        </td>
+        <td class="message">
+          <%= current_user.message %>
+        </td>
+      </tr>
+      <tr style="display: none;" class="my-status">
+        <td colspan="3">
+          <div>        
+            <%= form_for(:user, :as => current_user, 
+                  :url => registration_path(current_user), 
+                  :html => { :method => :put }) do |f| %>
+              <div class="return-buttons">
+                <%= radio_button_tag 'user[returns]', "", true, { :class => 'default-return-time' } %>
+                <% ['7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm'].each do |i| %>
+                  <%= radio_button_tag 'user[returns]', i, (current_user.returns == i)%>
+                  <label class="time-out"><%= i %></label>
+                <% end %> 
+              </div>
+              <div class="return-message">
+                <%= text_area :user, :message, :cols => 1, :rows => 1, :value => current_user.message %>
+              </div>
+              <div class="actions">
+                <button class="action-save">Save</button>
+                <button class="action-back">I'm Back</button>
+              </div>
+            <% end %>
+          </div>
+        </td>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</div>
 
 <script id="user-list-template" type="text/x-jquery-tmpl">
-  <li class="user corners">
-      <div class='header corners no-bottom-corners 
-        {{#if available}} 
-          header-available
-        {{else}} 
-          header-unavailable
-        {{/if}}'>
-        <span class="status
-        {{#if available }} 
-          available-status
-        {{else}} 
-          unavailable-status
-        {{/if}}">&nbsp;</span>
-        <span class="name">{{=name}}</span>
-        <span class="returns">
-          {{#if available !== true }} 
-           <label>returns </label> {{=returns}}     
-          {{/if}}
-        </span>
-    </div>
-    <div class="message"> 
-      {{#if available}} 
-        <span>In the office!</span>
-      {{else}} 
-        {{=message}}
-      {{/if}}
-    </div>
-  </li>
+  <tr>
+    <td class="name">
+      <span class="status {{#if available }} available {{else}} unavailable{{/if}}">&nbsp;
+      </span>
+        {{=name}}
+    </td>
+    <td class="returns">
+      {{=returns}}     
+    </td>
+    <td class="message">
+      {{=message}}
+    </td>
+  </tr>
 </script>

@@ -8,7 +8,7 @@ inout.refresh = function() {
 };
 
 inout.replaceUsers = function() {
-  var $body = $('#user-list');
+  var $body = $('#user-list').find('tbody');
   var i = 0;
   $.getJSON('/', function(data) {
     $body.empty();
@@ -18,11 +18,10 @@ inout.replaceUsers = function() {
 };
 
 $(function() {
-  var $statusBox = $('#my-status');
-  var $messageBox = $('#user_message', $statusBox);
-  var $radioButtons= $('input[type=radio]', $statusBox);
-  var $currentStatus = $('#main-nav').find('.status');
-
+  var $statusBox = $('#update-status');
+  var $messageBox = $('#user_message');
+  var $radioButtons= $('input[type=radio]');
+  
   inout.refresh();
 
   $('div.error,div.alert,div.notice,div.success,div.info').animate({ 
@@ -32,22 +31,11 @@ $(function() {
   );
 
   $statusBox.click(function(e) {
-    e.stopPropagation(); 
-  });
-
-  $('body').click(function() {
-    if($statusBox.is(":visible")) {
-      $statusBox.hide();
-    }
-  });
-
-  $('span.status').click(function(e) {
     e.stopPropagation();
-    $statusBox.toggle();
+    $('.my-status').toggle(); 
   });
 
-  $('.action-back', $statusBox).click(function() {
-    $messageBox.val('');
+  $('.action-back').click(function() {
     $radioButtons.first().attr('checked', true)
   });
 

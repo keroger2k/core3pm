@@ -80,61 +80,78 @@ body {
   margin: 0 auto;
 }
 
+.my-status {
+  .return-buttons {
+    padding:10px;
+  }
+  .return-message {
+    width:100%;
+    textarea {
+      width:90%;
+      display:block;
+      padding: 5px;
+    }
+  }
+  .actions {
+    padding: 10px;
+  }
+  .default-return-time {
+    display:none;
+  }
+}
+
 #header {
   padding: 10px;
   overflow: hidden;
   background-color: #EEE;
   line-height: 55px;
-}
+  
+  #logo { 
+    float: left; 
+    margin-left: 10px;
+    
+    a {
+      color: #07C;
+      text-decoration: none;
+    }
 
-#header #logo { 
-  float: left; 
-  margin-left: 10px;
-}
+    span {
+      font-size: 1.3em;
+      font-weight: bold;
+    }
+  }
 
-#header #logo a {
-  color: #07C;
-  text-decoration: none;
-}
+  #main-nav {
+    float: right;
+    font-size: 1.3em;
 
-#header #logo span {
-  font-size: 1.3em;
-  font-weight: bold;
-}
+    ul {
+      list-style: none;:
+      overflow: hidden;
+      margin: 0px 10px 0px 0px;
 
-#header #main-nav {
-  float: right;
-  font-size: 1.3em;
-}
+      li {
+        padding: 0px 5px;
+        float: left;
+      
+        a {
+          text-decoration: none;
+          color: #07C;
+          font-weight: bold;
 
-#header #main-nav ul {
-  list-style: none;:
-  overflow: hidden;
-  margin: 0px 10px 0px 0px;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
 }
-
-#header #main-nav ul li {
-  padding: 0px 5px;
-  float: left;
-}
-
-#header #main-nav ul li a {
-  text-decoration: none;
-  color: #07C;
-  font-weight: bold;
-}
-
-#header #main-nav ul li a:hover {
-  text-decoration: underline;
-}
-
-#header .default-return-time {
-  display:none;
-}
-
+ 
 #footer {
   background-color: #eee;
 }
+
 /* buttons */
 .login-window input[type="submit"]:hover {
   opacity: 1;
@@ -227,97 +244,6 @@ body {
   position: relative;
   top: 20px;
 }
-
-/* notices */
-.corners {
-  -moz-border-radius: 8px;
-  -webkit-border-radius: 8px;
-  border-radius: 8px;
-}
-
-
-ul#user-list { 
-  list-style:none;
-  margin: 20px auto 0px auto;
-  padding: 0 100px 0 100px;
-}
-
-.corners {
-  -moz-border-radius: 8px;
-  -webkit-border-radius: 8px;
-  border-radius: 8px;
-}
-
-.no-bottom-corners {
-  border-bottom-right-radius: 0px;
-  border-bottom-left-radius: 0px;
-}
-
-.user {
-  border: 1px solid silver;
-  -webkit-box-shadow: 0px 2px 5px rgba(0,0,0,0.25);
-  -moz-box-shadow: 0px 2px 5px rgba(0,0,0,0.25);
-  box-shadow: 0px 2px 5px rgba(0,0,0,0.25);
-  margin:0 0 20px 0;
-  background-color: #F2F2F2;
-}
-
-.header {
-  background-color: #F2A7A7;
-  padding: 5px;
-
-}
-
-.header-unavailable {
-  border-bottom: 1px solid #F2A7A7;
-  background-color: #F8CECE;
-}
-
-.header-available {
-  background-color: #DCF1CA;
-  border-bottom: 1px solid #9AD96C;
-}
-
-.name {
-  font-size:1.4em;
-  vertical-align: bottom;
-}
-
-.returns {
-  float: right;
-  font-size: 1.4em;
-  margin-right:5px;
-}
-
-.returns label {
-  font-size:.7em;
-  color: #666;
-  margin-right:10px; 
-}
-
-#user-list .message {
-  padding: 10px; 
-  color: #666;
-}
-
-#user-list .status {
-  display:inline-block;
-  width: 26px;
-  height: 26px;
-}
-.unavailable-status {
-  background-image: url('http://core3pm.herokuapp.com/assets/red-circle.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 20px;
-}
-.available-status {
-  background-image: url('http://core3pm.herokuapp.com/assets/green-circle.png');       
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 20px; 
-}
-
 
 .error, .alert, .notice, .success, .info { text-align: center; padding:0.8em;margin-bottom:1em;border:2px solid #ddd;}
 .success { border: 1px solid #b3dc7c; background-color: #e8ffca; }

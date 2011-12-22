@@ -18,32 +18,6 @@
         <div id="main-nav">
           <ul>
             <% if user_signed_in? %>
-              <li>
-                <% if current_user.available %>
-                  <span class="available status">&nbsp;</span>
-                <% else %>
-                  <span class="unavailable status">&nbsp;</span>
-                <% end %>
-                <div id="my-status">
-                  <div id="intro-text">
-                    <%= link_to "In/Out Board", root_path %>  Display your current availability
-                  </div>
-                    <%= form_for(:user, :as => current_user, 
-                          :url => registration_path(current_user), 
-                          :html => { :method => :put }) do |f| %>
-                      <%= radio_button_tag 'user[returns]', "", true, { :class => 'default-return-time' } %>
-                      <% ['7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm'].each do |i| %>
-                        <%= radio_button_tag 'user[returns]', i, (current_user.returns == i)%>
-                        <label class="time-out"><%= i %></label>
-                      <% end %> 
-                      <%= text_area :user, :message, :cols => 40, :rows => 4, :value => current_user.message %>
-                      <div class="actions">
-                        <button class="action-save">Save</button>
-                        <button class="action-back">I'm Back</button>
-                      </div>
-                    <% end %>
-                </div>
-              </li>
               <li><%= link_to current_user.email, edit_user_registration_path(@current_user) %> | </li>
               <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
             <% else %>
@@ -62,6 +36,7 @@
           <% end %>
         </div>
       <% end %>
+
       <%= yield %>
     </div>
     <div id="footer">
