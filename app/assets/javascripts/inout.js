@@ -1,10 +1,3 @@
-var User = Backbone.Model.extend({});
-
-var Users = Backbone.Collection.extend({
-  model: User,
-  url: "/users/index"
-});
-
 var inout = {};
 
 inout.refresh = function() {
