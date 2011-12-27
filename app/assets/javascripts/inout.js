@@ -5,6 +5,33 @@ var Users = Backbone.Collection.extend({
   url: "/users/index"
 });
 
+var users = new Users();
+
+var UserView = Backbone.View.extend({
+  initialize: function () {
+    _.bindAll(this, 'render');
+    this.template = $("#user-list-template");
+  },
+  render: function () {
+    var data = { items: this.collection.toJSON() };
+    var html = this.template.render(data.items);
+    $(this.el).html(html);
+    return this;
+  }
+});
+
+var InOutAdmin = Backbone.Router.extend({
+  initialize: function () {
+    listView = new UserView({ collection: users, el: "#user-list tbody" });
+  },
+  routes: {
+    "": "index",
+  },
+  index: function () {
+      listView.render();
+  },
+});
+
 var inout = {};
 
 inout.refresh = function() {
@@ -25,6 +52,15 @@ inout.replaceUsers = function() {
 };
 
 $(function() {
+  users.fetch({
+    success: function () {
+      window.app = new InOutAdmin();
+      Backbone.history.start();
+    },
+    error: function () {
+    }
+  });
+
   var $statusBox = $('#update-status');
   var $messageBox = $('#user_message');
   var $radioButtons= $('input[type=radio]');

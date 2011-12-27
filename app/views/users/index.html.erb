@@ -1,12 +1,3 @@
-<script type="text/javascript">
-
-  $(function() {
-    $.getJSON('/', function(data) {
-      $('#user-list').find('tbody').html($('#user-list-template').render(data));
-    });
-  });
-
-</script>
 <div style="padding: 20px;">
   <table id="user-list">
     <thead>
@@ -61,17 +52,17 @@
 </div>
 
 <script id="user-list-template" type="text/x-jquery-tmpl">
-  <tr>
-    <td class="name">
-      <span class="status {{#if available }} available {{else}} unavailable{{/if}}">&nbsp;
-      </span>
-        {{=name}}
-    </td>
-    <td class="returns">
-      {{=returns}}     
-    </td>
-    <td class="message">
-      {{=message}}
-    </td>
-  </tr>
+<tr>
+  <td class="name">
+    <span class="status {{#if available }} available {{else}} unavailable{{/if}}">&nbsp;
+    </span>
+      {{=name}}
+  </td>
+  <td class="returns">
+    {{=returns}}     
+  </td>
+  <td class="message">
+    {{=message}}
+  </td>
+</tr>
 </script>
