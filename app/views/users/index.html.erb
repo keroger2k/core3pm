@@ -1,10 +1,14 @@
 <script type="text/javascript">
 
   $(function() {
+    
+    $('#user_returns').datetimepicker();
+
     $.getJSON('/', function(data) {
       $('#user-list').find('tbody').html($('#user-list-template').render(data));
     });
-  });
+  
+});
 
 </script>
 <div style="padding: 20px;">
@@ -36,14 +40,12 @@
                   :url => registration_path(current_user), 
                   :html => { :method => :put }) do |f| %>
               <div class="return-buttons">
-                <%= radio_button_tag 'user[returns]', "", true, { :class => 'default-return-time' } %>
-                <% ['7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','Out'].each do |i| %>
-                  <%= radio_button_tag 'user[returns]', i, (current_user.returns == i)%>
-                  <label class="time-out"><%= i %></label>
-                <% end %> 
+                <%= f.label :returns %>
+                <%= f.text_field :returns %>
               </div>
               <div class="return-message">
-                <%= text_area :user, :message, :cols => 1, :rows => 1, :value => current_user.message %>
+                <%= f.label :message %>
+                <%= f.text_area :message, :cols => 1, :rows => 1, :value => current_user.message %>
               </div>
               <div class="actions">
                 <button class="action-save">Save</button>
