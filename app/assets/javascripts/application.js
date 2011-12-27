@@ -7,4 +7,4 @@
 //= require jquery
 //= require jquery_ujs
 //= require jsrender
-//= inout
+//= require inout
