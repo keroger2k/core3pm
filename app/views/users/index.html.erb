@@ -37,7 +37,7 @@
                   :html => { :method => :put }) do |f| %>
               <div class="return-buttons">
                 <%= radio_button_tag 'user[returns]', "", true, { :class => 'default-return-time' } %>
-                <% ['7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm'].each do |i| %>
+                <% ['7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','Out'].each do |i| %>
                   <%= radio_button_tag 'user[returns]', i, (current_user.returns == i)%>
                   <label class="time-out"><%= i %></label>
                 <% end %> 
