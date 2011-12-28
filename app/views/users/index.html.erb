@@ -3,7 +3,8 @@
   $(function() {
     
     $('#user_returns').datetimepicker({
-      ampm: true
+      ampm: true,
+      dateFormat: "yy-mm-dd"
     });
 
     $.getJSON('/', function(data) {
@@ -29,7 +30,9 @@
           <a href="#" id="update-status"><%= current_user.name %></a>
         </td>
         <td class="returns">
-          <%= current_user.returns %>
+          <div class="">
+            <%= current_user.returns.try(:strftime, '%Y-%m-%d %I:%M %P') %>
+          </div>
         </td>
         <td class="message">
           <%= current_user.message %>
@@ -43,7 +46,7 @@
                   :html => { :method => :put }) do |f| %>
               <div class="return-buttons">
                 <%= f.label :returns %>
-                <%= f.text_field :returns %>
+                <%= f.text_field :returns, :value => current_user.returns.try(:strftime, '%Y-%m-%d %I:%M %P') %>
               </div>
               <div class="return-message">
                 <%= f.label :message %>
@@ -72,7 +75,9 @@
         {{=name}}
     </td>
     <td class="returns">
-      {{=returns}}     
+      <div class="">
+        {{=returns}}     
+      </div>
     </td>
     <td class="message">
       {{=message}}

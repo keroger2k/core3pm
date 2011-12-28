@@ -20,7 +20,6 @@ inout.replaceUsers = function() {
 $(function() {
   var $statusBox = $('#update-status');
   var $messageBox = $('#user_message');
-  var $radioButtons= $('input[type=radio]');
   
   inout.refresh();
 
@@ -35,8 +34,10 @@ $(function() {
     $('.my-status').toggle(); 
   });
 
-  $('.action-back').click(function() {
-    $radioButtons.first().attr('checked', true)
+  $('.action-back').click(function(e) {
+    var form = $(e.target).parents('form');
+    form.find('input[type=text]').val('');
+    form.find('textarea').val('');
   });
 
 });
