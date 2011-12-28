@@ -1,5 +1,25 @@
 html, body { height: 100%; }
 
+.my-status {
+  .return-buttons {
+    padding:10px;
+  }
+  .return-message {
+    width:100%;
+    textarea {
+      width:50%;
+      padding: 5px;
+    }
+  }
+  .actions {
+    padding: 10px;
+  }
+  .default-return-time {
+    display:none;
+  }
+}
+
+
 table#user-list {
   width: 100%;
   font-size: 1.2em;

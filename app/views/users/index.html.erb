@@ -2,7 +2,9 @@
 
   $(function() {
     
-    $('#user_returns').datetimepicker();
+    $('#user_returns').datetimepicker({
+      ampm: true
+    });
 
     $.getJSON('/', function(data) {
       $('#user-list').find('tbody').html($('#user-list-template').render(data));

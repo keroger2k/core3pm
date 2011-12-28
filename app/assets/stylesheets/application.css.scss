@@ -80,25 +80,6 @@ body {
   margin: 0 auto;
 }
 
-.my-status {
-  .return-buttons {
-    padding:10px;
-  }
-  .return-message {
-    width:100%;
-    textarea {
-      width:50%;
-      padding: 5px;
-    }
-  }
-  .actions {
-    padding: 10px;
-  }
-  .default-return-time {
-    display:none;
-  }
-}
-
 #header {
   padding: 10px;
   overflow: hidden;
@@ -251,7 +232,7 @@ body {
 .ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
 .ui-timepicker-div td { font-size: 90%; }
 .ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
-
+div.ui-datepicker{ font-size:11px; }
 
 .error, .alert, .notice, .success, .info { text-align: center; padding:0.8em;margin-bottom:1em;border:2px solid #ddd;}
 .success { border: 1px solid #b3dc7c; background-color: #e8ffca; }
