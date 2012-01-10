@@ -8,10 +8,14 @@ class User < ActiveRecord::Base
   attr_accessible :name, :message, :available, :returns, :email, :password, :password_confirmation, :remember_me
   validates_presence_of :name
 
-  def update_with_password(params={})
-    params.delete(:current_password)
-    self.update_without_password(params)
-  end
+  def update_with_password(params={}) 
+    if params[:password].blank? 
+      params.delete(:password) 
+      params.delete(:password_confirmation) if 
+      params[:password_confirmation].blank? 
+    end 
+    update_attributes(params) 
+  end 
 
   def available
     !self.returns?
