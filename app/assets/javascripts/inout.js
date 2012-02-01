@@ -1,3 +1,7 @@
+$.ajaxSetup ({
+    cache: false
+});
+
 var inout = {};
 
 inout.refresh = function() {
@@ -10,7 +14,7 @@ inout.refresh = function() {
 inout.replaceUsers = function() {
   var $body = $('#user-list').find('tbody');
   var i = 0;
-  $.getJSON('/', function(data) {
+  $.getJSON('/?callback=', function(data) {
     $body.empty();
     $body.html($('#user-list-template').render(data));
     inout.refresh();
